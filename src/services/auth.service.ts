@@ -15,7 +15,8 @@ const AuthService = {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)
-    const newUser = await UserModel.create({ ...registrationData, password: hashedPassword })
+    // Hard code admin role
+    const newUser = await UserModel.create({ ...registrationData, password: hashedPassword, role: 'admin' })
 
     return newUser
   },
